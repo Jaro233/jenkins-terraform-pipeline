@@ -1,6 +1,6 @@
 provider "aws" {
-  region                  = "us-east-1"
-  shared_credentials_files = "~/.aws/credentials"
+  region                   = "us-east-1"
+  shared_credentials_files = ["~/.aws/credentials"]
 }
 
 variable "access_key" {
