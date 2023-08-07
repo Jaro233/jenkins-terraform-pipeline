@@ -23,7 +23,7 @@ pipeline {
     }
     stage("TerraformFormat") {
       steps {
-        sh "terraform fmt -list=true -input=false -diff=true -check=true"
+        sh "terraform fmt -list=true -diff=true -check=true"
       }
     }
     stage("TerraformValidate") {
