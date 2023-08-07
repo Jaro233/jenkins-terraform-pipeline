@@ -19,6 +19,7 @@ pipeline {
         sh "terraform init -input=false"
         sh "echo \$PWD"
         sh "whoami"
+        sh "echo $ACCESS_KEY, $SECRET_KEY"
       }
     }
     stage("TerraformFormat") {
