@@ -2,6 +2,13 @@ provider "aws" {
   region = "us-east-1"
 }
 
+variable "access_key" {
+  type = string
+}
+variable "secret_key" {
+  type = string
+}
+
 resource "aws_iam_role" "lambda-role" {
   name = "ec2-stop-start-new"
 
