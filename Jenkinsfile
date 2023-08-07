@@ -39,7 +39,7 @@ pipeline {
           } catch (err) {
             sh "terraform workspace select ${params.WORKSPACE}"
           }
-          sh "terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' \
+          sh "terraform plan -var 'access_key=${ACCESS_KEY}' -var 'secret_key=${SECRET_KEY}' \
           -out terraform.tfplan;echo \$? > status"
           stash name: "terraform-plan", includes: "terraform.tfplan"
         }
