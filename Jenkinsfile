@@ -39,8 +39,11 @@ pipeline {
           } catch (err) {
             sh "terraform workspace select ${params.WORKSPACE}"
           }
-          sh 'terraform plan -var \"access_key=${ACCESS_KEY}\" -var \"secret_key=${SECRET_KEY}\" \
-          -out terraform.tfplan;echo \$? > status'
+           withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'ACCESS_KEY'), string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'SECRET_KEY')]) {
+              sh 'terraform plan -var \"access_key=${ACCESS_KEY}\" -var \"secret_key=${SECRET_KEY}\" \
+              -out terraform.tfplan;echo \$? > status'
+           
+           }
           stash name: "terraform-plan", includes: "terraform.tfplan"
         }
       }
