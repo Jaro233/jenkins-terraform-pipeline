@@ -18,3 +18,4 @@ def lambda_handler(event, context):
         for instance in instances:
             instance.stop()
             print("The following instance is now in stopped state", instance.id)
+            # testing pull request
